@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Resources;
+using System.Threading;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
@@ -23,21 +24,24 @@ namespace WpfUtil.Extension
                 Tuple<string, string> tuple = SplitName(key);
                 string translation = null;
                 if (resourceManagerDictionary.ContainsKey(tuple.Item1))
-                    translation = resourceManagerDictionary[tuple.Item1].GetString(tuple.Item2, currentCulture);
+                    translation = resourceManagerDictionary[tuple.Item1].GetString(tuple.Item2, Thread.CurrentThread.CurrentUICulture);
                 return translation ?? key;
             }
         }
 
-        private CultureInfo currentCulture = CultureInfo.InstalledUICulture;
-        public CultureInfo CurrentCulture
+        private string language = Thread.CurrentThread.CurrentUICulture.Name;
+        public string Language
         {
-            get { return currentCulture; }
+            get { return language; }
             set
             {
-                if (currentCulture != value)
+                if (language != null)
                 {
-                    currentCulture = value;
-                    // string.Empty/null indicates that all properties have changed
+                    language = value;
+
+                    var cultureInfo = new CultureInfo(value);
+                    Thread.CurrentThread.CurrentUICulture = cultureInfo;
+                    Thread.CurrentThread.CurrentCulture = cultureInfo;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(string.Empty));
                 }
             }

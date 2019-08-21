@@ -50,9 +50,9 @@ namespace WpfUtil.Extension
             return tempArray;
         }
     }
-    public class EnumDescriptionTypeConverter : EnumConverter
+    public class EnumDefaultValueTypeConverter : EnumConverter
     {
-        public EnumDescriptionTypeConverter(Type type) : base(type)
+        public EnumDefaultValueTypeConverter(Type type) : base(type)
         {
         }
 
@@ -65,8 +65,8 @@ namespace WpfUtil.Extension
                     FieldInfo fi = value.GetType().GetField(value.ToString());
                     if (fi != null)
                     {
-                        var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-                        return ((attributes.Length > 0) && (!string.IsNullOrEmpty(attributes[0].Description))) ? attributes[0].Description : value.ToString();
+                        var attributes = (DefaultValueAttribute[])fi.GetCustomAttributes(typeof(DefaultValueAttribute), false);
+                        return ((attributes.Length > 0) && (!string.IsNullOrEmpty(attributes[0].Value.ToString()))) ? attributes[0].Value : value.ToString();
                     }
                 }
 

@@ -3,6 +3,7 @@ using ModuleA.Strings;
 using Prism.Mvvm;
 using System.Globalization;
 using System.Threading;
+using WpfUtil;
 using WpfUtil.Extension;
 
 namespace ModuleA.ViewModels
@@ -29,22 +30,8 @@ namespace ModuleA.ViewModels
             {
                 SetProperty(ref requestTypeItem, value);
 
-                if (requestTypeItem == RequestTypeValue.zhCN)
-                {
-                    var _culture = new CultureInfo("zh-CN");
-                    TranslationSource.Instance.CurrentCulture = _culture;
-
-                    //临时操作 
-                    Message = string.Format(SR.ResourceManager.GetString("Message", TranslationSource.Instance.CurrentCulture),System.DateTime.Now);
-                }
-                else
-                {
-                    var _culture = new CultureInfo("en-US");
-                    TranslationSource.Instance.CurrentCulture = _culture;
-
-                    Message = string.Format(SR.ResourceManager.GetString("Message", _culture), System.DateTime.Now);
-
-                }
+                TranslationSource.Instance.Language = EnumHelper.GetDescription(requestTypeItem);
+                Message = string.Format(SR.ResourceManager.GetString("Message", Thread.CurrentThread.CurrentUICulture), System.DateTime.Now);
             }
         }
     }

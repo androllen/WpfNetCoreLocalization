@@ -3,12 +3,14 @@ using WpfUtil.Extension;
 
 namespace ModuleA.Models
 {
-    [TypeConverter(typeof(EnumDescriptionTypeConverter))]
+    [TypeConverter(typeof(EnumDefaultValueTypeConverter))]
     public enum RequestTypeValue
     {
-        [Description("中文")]
+        [Description("zh-CN"), DefaultValue("中文")]
         zhCN,
-        [Description("英文")]
-        enUS
+        [Description("en-US"), DefaultValue("英文")]
+        enUS,
+        [Description("ja-JP"), DefaultValue("日文")]
+        jaJP
     }
 }

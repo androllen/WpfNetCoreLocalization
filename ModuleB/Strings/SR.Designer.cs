@@ -61,7 +61,7 @@ namespace ModuleB.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View A from your Prism Module Code-behind.
+        ///   Looks up a localized string similar to View B from your Prism Module Code-behind.
         /// </summary>
         public static string Message {
             get {
