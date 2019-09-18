@@ -117,7 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Message" xml:space="preserve">
+    <value>这是通过换行符\n是通过Converter进行换行的</value>
+  </data>
   <data name="Test" xml:space="preserve">
-    <value>这是一个测试数据</value>
+    <value>这是通过资源字典换行
+是通过Shift+Enter换行</value>
   </data>
 </root>

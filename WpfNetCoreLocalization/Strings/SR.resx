@@ -117,7 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Message" xml:space="preserve">
+    <value>this is by wrapchar \n  by Converter </value>
+  </data>
   <data name="Test" xml:space="preserve">
-    <value>this is a test</value>
+    <value>this is by resx wrap
+by Shift+Enter </value>
   </data>
 </root>

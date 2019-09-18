@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="EnumBindingSourceExtension.cs" />
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="NewLineConverter.cs" />
     <Compile Include="TranslationSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -2,6 +2,7 @@
     x:Class="WpfNetCoreLocalization.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:WpfUtil;assembly=WpfUtil"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:ext="clr-namespace:WpfUtil.Extension;assembly=WpfUtil"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,7 +12,11 @@
     Width="450"
     Height="450"
     ext:Translation.ResourceManager="{x:Static resx:SR.ResourceManager}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
+    <Window.Resources>
+        <converter:NewLineConverter x:Key="keyNewLineConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -23,7 +28,20 @@
             Margin="2"
             BorderBrush="Gray"
             BorderThickness="1">
-            <Label Content="{ext:Loc Test}" FontSize="21" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Label
+                    Content="{ext:Loc Test}"
+                    FontSize="21"
+                    Foreground="Green" />
+                <TextBlock
+                    Grid.Row="1"
+                    Foreground="Red"
+                    Text="{Binding Message, Converter={StaticResource keyNewLineConverter}, Mode=TwoWay}" />
+            </Grid>
         </Border>
 
         <Border

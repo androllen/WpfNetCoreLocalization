@@ -61,7 +61,17 @@ namespace WpfNetCoreLocalization.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to this is a test.
+        ///   Looks up a localized string similar to this is by wrapchar \n  by Converter .
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to this is by resx wrap
+        ///by Shift+Enter .
         /// </summary>
         public static string Test {
             get {
